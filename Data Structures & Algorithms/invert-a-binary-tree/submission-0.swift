@@ -1,0 +1,32 @@
+/**
+ * Definition for a binary tree node.
+ * class TreeNode {
+ *     var val: Int
+ *     var left: TreeNode?
+ *     var right: TreeNode?
+ *     init(_ val: Int) {
+ *         self.val = val
+ *         self.left = nil
+ *         self.right = nil
+ *     }
+ * }
+ */
+
+class Solution {
+    func invertTree(_ root: TreeNode?) -> TreeNode? {
+
+        func invert(_ root: TreeNode?) {
+                    if root == nil {
+                        return
+                    }
+            let temp = root?.left
+            root?.left = root?.right
+            root?.right = temp
+            invert(root?.left)
+            invert(root?.right)
+        }
+
+    invert(root)
+    return root
+    }
+}
